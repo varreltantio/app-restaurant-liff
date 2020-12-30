@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nito Resto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <!-- My Css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container" onload="loadPesanan()">
+        <div class="page-header text-center">
+            <h1>Nito Resto</h1>
+            <p>Halo <b>Costumer</b>! Selamat datang di Nito Resto. Silahkan pesan melalui menu dibawah ini</p>
+        </div>
+
+        <div id="makanan" class="makanan page-header">
+            <h3 class="text-center mb-3">Makanan</h3>
+            <div class="row owl-carousel">
+                <div class="col-lg">
+                    <div class="card">
+                        <a href="#"><img src="img/makanan/sate.jpg" class="card-img-top" alt="sate"></a>
+                        <div class="card-body qty">
+                            <input type="text" name="id" class="id_data"  value="1" hidden>
+                            <h3><a href="#" class="text-decoration-none">Sate</a></h3>
+                            <p class="text-muted" data-price="10000">Rp. 10.000</p>
+                            <a class="minus bg-dark" style="display: none;">-</a>
+                            <input type="text" name="name" value="0" style="display: none;">
+                            <a class="plus bg-dark">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="card">
+                        <a href="#"><img src="img/makanan/soto.jpg" class="card-img-top" alt="soto"></a>
+                        <div class="card-body qty">
+                            <input type="text" name="id" class="id_data" value="2" hidden>
+                            <h3><a href="#" class="text-decoration-none">Soto</a></h3>
+                            <p class="text-muted" data-price="8000">Rp. 8.000</p>
+                            <a class="minus bg-dark" style="display: none;">-</a>
+                            <input type="text" name="name" value="0" style="display: none;">
+                            <a class="plus bg-dark">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="card">
+                        <a href="#"><img src="img/makanan/ayam-bakar.jpg" class="card-img-top" alt="ayam-bakar"></a>
+                        <div class="card-body qty">
+                            <input type="text" name="id" class="id_data" value="3" hidden>
+                            <h3><a href="#" class="text-decoration-none">Ayam Bakar</a></h3>
+                            <p class="text-muted" data-price="12000">Rp. 12.000</p>
+                            <a class="minus bg-dark" style="display: none;">-</a>
+                            <input type="text" name="name" value="0" style="display: none;">
+                            <a class="plus bg-dark">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="card">
+                        <a href="#"><img src="img/makanan/nasi-goreng.jpg" class="card-img-top" alt="nasi-goreng"></a>
+                        <div class="card-body qty">
+                            <input type="text" name="id" class="id_data" value="4" hidden>
+                            <h3><a href="#" class="text-decoration-none">Nasi Goreng</a></h3>
+                            <p class="text-muted" data-price="8000">Rp. 8.000</p>
+                            <a class="minus bg-dark" style="display: none;">-</a>
+                            <input type="text" name="name" value="0" style="display: none;">
+                            <a class="plus bg-dark">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div class="card">
+                        <a href="#"><img src="img/makanan/bakmi-goreng.jpg" class="card-img-top" alt="bakmi-goreng"></a>
+                        <div class="card-body qty">
+                            <input type="text" name="id" class="id_data" value="5" hidden>
+                            <h3><a href="#" class="text-decoration-none">Bakmi Goreng</a></h3>
+                            <p class="text-muted" data-price="6000">Rp. 6.000</p>
+                            <a class="minus bg-dark" style="display: none;">-</a>
+                            <input type="text" name="name" value="0" style="display: none;">
+                            <a class="plus bg-dark">+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="checkout" class="checkout">
+        </div>
+
+        <!-- Kontent LIFF V2 -->
+        <div id="liffAppContent">
+            <!-- ACTIONS BUTTONS -->
+            <div class="buttonGroup">
+                <div class="buttonRow text-center mb-5">
+                    <button id="openWindowButton" class="btn btn-success btn-small">Open External Window</button>
+                    <button id="closeWindowButton" class="btn btn-danger btn-small">Close LIFF App</button>
+                    <button id="sendMessageButton" class="btn btn-warning btn-small">Send Message</button>
+                </div>
+            </div>
+
+            <!-- LOGIN LOGOUT BUTTON -->
+            <div class="buttonGroup text-center mb-5">
+                <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
+                <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
+            </div>
+        </div>
+
+        <!-- LIFF ID ERROR -->
+        <div id="liffIdErrorMessage" class="hidden">
+            <p>You have not assigned any value for LIFF ID.</p>
+            <p>If you are running the app using Node.js, please set the LIFF ID as an environment variable in your
+                Heroku account follwing the below steps: 
+            </p>
+
+            <code id="code-block">
+                <ol>
+                    <li>Go to `Dashboard` in your Heroku account.</li>
+                    <li>Click on the app you just created.</li>
+                    <li>Click on `Settings` and toggle `Reveal Config Vars`.</li>
+                    <li>Set `MY_LIFF_ID` as the key and the LIFF ID as the value.</li>
+                    <li>Your app should be up and running. Enter the URL of your app in a web browser.</li>
+                </ol>
+            </code>
+
+            <p>If you are using any other platform, please add your LIFF ID in the <code>index.html</code> file.</p>
+            <p>For more information about how to add your LIFF ID, see 
+                <a href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">Initializing the LIFF app</a>.
+            </p>
+        </div>
+
+        <!-- LIFF INIT ERROR -->
+        <div id="liffInitErrorMessage" class="hidden">
+            <p>Something went wrong with LIFF initialization.</p>
+            <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
+        </div>
+
+        <!-- NODE.JS LIFF ID ERROR -->
+        <div id="nodeLiffIdErrorMessage" class="hidden">
+            <p>Unable to receive the LIFF ID as an environment variable.</p>
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <!-- My JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
