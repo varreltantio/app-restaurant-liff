@@ -127,7 +127,7 @@ function registerButtonHandlers() {
     .getElementById("openWindowButton")
     .addEventListener("click", function () {
       liff.openWindow({
-        url: "https://nito-resto.herokuapp.com/", // Isi dengan Endpoint URL aplikasi web Anda
+        url: "https://belajar-liff-v2.herokuapp.com/", // Isi dengan Endpoint URL aplikasi web Anda
         external: true,
       });
     });
