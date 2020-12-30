@@ -1,6 +1,6 @@
 window.onload = function () {
   const useNodeJS = false; // if you are not using a node server, set this value to false
-  const defaultLiffId = "1655317138-Da8JPer2"; // change the default LIFF value if you are not using a node server
+  const defaultLiffId = "1655317138-oY7qKB40"; // change the default LIFF value if you are not using a node server
 
   // DO NOT CHANGE THIS
   let myLiffId = "";
@@ -127,7 +127,7 @@ function registerButtonHandlers() {
     .getElementById("openWindowButton")
     .addEventListener("click", function () {
       liff.openWindow({
-        url: "https://belajar-liff-v2.herokuapp.com/", // Isi dengan Endpoint URL aplikasi web Anda
+        url: "https://nito-resto.herokuapp.com/", // Isi dengan Endpoint URL aplikasi web Anda
         external: true,
       });
     });
