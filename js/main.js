@@ -74,42 +74,42 @@ $(document).ready(function () {
   });
 
   $("#buttonPesan").on("click", function () {
+    if (localStorage.list_data) {
+      list_data = JSON.parse(localStorage.getItem("list_data"));
+
+      message = "";
+      var total_pembayaran = 0;
+      for (i in list_data) {
+        var int_price = parseInt(list_data[i].price);
+        var int_total = parseInt(list_data[i].total);
+        var pembayaran = int_price * int_total;
+
+        total_pembayaran += pembayaran;
+
+        message += `*${list_data[i].total} ${list_data[i].name}`;
+      }
+    }
+
     if (!liff.isInClient()) {
       sendAlertIfNotInClient();
     } else {
-      if (localStorage.list_data) {
-        list_data = JSON.parse(localStorage.getItem("list_data"));
-
-        message = "";
-        var total_pembayaran = 0;
-        for (i in list_data) {
-          var int_price = parseInt(list_data[i].price);
-          var int_total = parseInt(list_data[i].total);
-          var pembayaran = int_price * int_total;
-
-          total_pembayaran += pembayaran;
-
-          message += `*${list_data[i].total} ${list_data[i].name}`;
-        }
-        liff
-          .sendMessages([
-            {
-              type: "text",
-              text: `
-              Hai Customer, 
-              Terimakasih telah memesan di Nito Resto, Berikut adalah review pesananya :
-              ${message}
-              `,
-            },
-          ])
-          .then(() => {
-            alert("Pesanan telah diterima. Harap tunggu");
-          })
-          .catch((error) => {
-            alert("Aduh kok error ya...");
-          });
-      }
+        liff.sendMessages([{
+            "type": "text",
+            "text": `
+            Hai Customer, 
+            Terimakasih telah memesan di Nito Resto, Berikut adalah review pesananya :
+            ${message}
+            `
+        }])
+        .then(() => {
+          alert("Pesanan telah diterima. Harap tunggu");
+        })
+        .catch((error) => {
+          alert("Aduh kok error ya...");
+        });    
     }
+
+    return false
   });
 });
 
