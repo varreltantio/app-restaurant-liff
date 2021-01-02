@@ -73,44 +73,44 @@ $(document).ready(function () {
     loadPesanan();
   });
 
-  $("#buttonPesan").on("click", function () {
-    if (localStorage.list_data) {
-      list_data = JSON.parse(localStorage.getItem("list_data"));
+  // $("#buttonPesan").on("click", function () {
+  //   if (localStorage.list_data) {
+  //     list_data = JSON.parse(localStorage.getItem("list_data"));
 
-      message = "";
-      var total_pembayaran = 0;
-      for (i in list_data) {
-        var int_price = parseInt(list_data[i].price);
-        var int_total = parseInt(list_data[i].total);
-        var pembayaran = int_price * int_total;
+  //     message = "";
+  //     var total_pembayaran = 0;
+  //     for (i in list_data) {
+  //       var int_price = parseInt(list_data[i].price);
+  //       var int_total = parseInt(list_data[i].total);
+  //       var pembayaran = int_price * int_total;
 
-        total_pembayaran += pembayaran;
+  //       total_pembayaran += pembayaran;
 
-        message += `*${list_data[i].total} ${list_data[i].name}`;
-      }
-    }
+  //       message += `*${list_data[i].total} ${list_data[i].name}`;
+  //     }
+  //   }
 
-    if (!liff.isInClient()) {
-      sendAlertIfNotInClient();
-    } else {
-        liff.sendMessages([{
-            "type": "text",
-            "text": `
-            Hai Customer, 
-            Terimakasih telah memesan di Nito Resto, Berikut adalah review pesananya :
-            ${message}
-            `
-        }])
-        .then(() => {
-          alert("Pesanan telah diterima. Harap tunggu");
-        })
-        .catch((error) => {
-          alert("Aduh kok error ya...");
-        });    
-    }
+  //   if (!liff.isInClient()) {
+  //     sendAlertIfNotInClient();
+  //   } else {
+  //       liff.sendMessages([{
+  //           "type": "text",
+  //           "text": `
+  //           Hai Customer, 
+  //           Terimakasih telah memesan di Nito Resto, Berikut adalah review pesananya :
+  //           ${message}
+  //           `
+  //       }])
+  //       .then(() => {
+  //         alert("Pesanan telah diterima. Harap tunggu");
+  //       })
+  //       .catch((error) => {
+  //         alert("Aduh kok error ya...");
+  //       });    
+  //   }
 
-    return false
-  });
+  //   return false
+  // });
 });
 
 function loadPesanan() {
@@ -149,7 +149,7 @@ function loadPesanan() {
 
       data_app += `</tbody></table>`;
 
-      data_app += `<div class="pesanan"><p>Total Pembayaran : ${total_pembayaran}</p> <button id="buttonPesan" class="btn btn-success btn-small">Pesan Sekarang</button>`;
+      data_app += `<div class="pesanan"><p>Total Pembayaran : ${total_pembayaran}</p> <button id="buttonPesan" onclick="simpanData()" class="btn btn-success btn-small">Pesan Sekarang</button>`;
     } else {
       data_app = "Silahkan Pilih Menu Dahulu";
     }
@@ -191,5 +191,21 @@ function hapusPesanan(data) {
     }
 
     localStorage.setItem("list_data", JSON.stringify(list_data));
+  }
+}
+
+function simpanData() {
+
+  if (!liff.isInClient()) {
+      sendAlertIfNotInClient();
+  } else {
+      liff.sendMessages([{
+          'type': 'text',
+          'text': 'Catatan baru berhasil disimpan'
+      }]).then(function() {
+          alert('Catatan Tersimpan');
+      }).catch(function(error) {
+          alert('Aduh kok error ya...');
+      });
   }
 }
