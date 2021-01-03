@@ -72,6 +72,8 @@ $(document).ready(function () {
     ubahPesanan(data);
     loadPesanan();
   });
+
+  $("#login").show();
 });
 
 function loadPesanan() {
