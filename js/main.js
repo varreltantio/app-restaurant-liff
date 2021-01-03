@@ -159,7 +159,7 @@ function simpanData() {
   if (localStorage.list_data) {
     list_data = JSON.parse(localStorage.getItem("list_data"));
 
-    var message = "";
+    message = "";
     var total_pembayaran = 0;
     
     message += `Hai ${clientName} \n`;
