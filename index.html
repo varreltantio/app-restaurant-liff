@@ -16,6 +16,31 @@
 </head>
 
 <body onload="loadPesanan()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="navbar hidden">
+        <div class="container-md">
+            <a class="navbar-brand" href="#">Nito Resto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" id="client" href="#">
+                            <img src="img/default.jpg" alt="profile-image" id="clientProfile" class="rounded-circle"
+                                width="10%">
+                            <span id="clientNameNav">Costumer</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="liffLogoutButton" class="btn btn-danger btn-small">Log out</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div id="login" class="login text-center mt-5">
             <h1>Nito Resto</h1>
@@ -24,29 +49,6 @@
         </div>
 
         <div id="content" class="content hidden">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="navbar">
-                <a class="navbar-brand" href="#">Nito Resto</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" id="client" href="#">
-                                <img src="img/default.jpg" alt="profile-image" id="clientProfile" class="rounded-circle"
-                                    width="10%">
-                                <span id="clientNameNav">Costumer</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <button id="liffLogoutButton" class="btn btn-danger btn-small">Log out</button>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
             <div class="page-header text-center">
                 <h1>Nito Resto</h1>
                 <p>Halo <span id="clientNameHeader" class="fw-bold">Costumer</span>! Selamat datang di Nito Resto.

@@ -71,6 +71,7 @@ function initializeApp() {
     document.getElementById("liffLoginButton").disabled = true;
     document.getElementById("login").classList.toggle("hidden");
     document.getElementById("content").classList.remove("hidden");
+    document.getElementById("navbar").classList.remove("hidden");
   } else {
     document.getElementById("liffLogoutButton").disabled = true;
   }
@@ -130,6 +131,7 @@ function registerButtonHandlers() {
       // cek jika belum login
       if (!liff.isLoggedIn()) {
         liff.login();
+        window.location.reload();
       }
     });
 
