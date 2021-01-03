@@ -168,24 +168,16 @@ function simpanData() {
 
       total_pembayaran += pembayaran;
 
-      message += `*${list_data[i].total} ${list_data[i].name}`;
+      message += `*${list_data[i].total} ${list_data[i].name} \n`;
 
-      clientName = $("#clientName").text();
+      clientName = $("#clientNameNav").text();
     }
     if (!liff.isInClient()) {
         sendAlertIfNotInClient();
     } else {
         liff.sendMessages([{
             'type': 'text',
-            'text': `Hai ${clientName}
-
-            Terimakasih telah memesan makanan, berikut adalah review pesanannya:
-            
-            ${message}
-            
-            Pesanan kak ${clientName} sedang diproses dan akan diberitahu jika selesai
-            
-            Mohon ditunggu. Terimakasih`
+            'text': `Hai ${clientName}\nTerimakasih telah memesan makanan, berikut adalah review pesanannya:\n${message}\nPesanan kak ${clientName} sedang diproses dan akan diberitahu jika selesai\nMohon ditunggu. Terimakasih`
         }]).then(function() {
             alert('Pesanan sedang diproses');
         }).catch(function(error) {

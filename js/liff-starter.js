@@ -196,9 +196,8 @@ function displayClientProfile() {
   } else {
     liff.getProfile()
     .then(profile => {
-      console.log(profile.displayName)
-      console.log(profile.pictureUrl)
-      document.getElementById("clientName").textContent = profile.displayName;
+      document.getElementById("clientNameNav").textContent = profile.displayName;
+      document.getElementById("clientNameHeader").textContent = profile.displayName;
       document.getElementById("clientProfile").src = profile.pictureUrl;
     })
     .catch((err) => {
