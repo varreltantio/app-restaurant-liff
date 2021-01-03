@@ -159,8 +159,11 @@ function simpanData() {
   if (localStorage.list_data) {
     list_data = JSON.parse(localStorage.getItem("list_data"));
 
-    message = "";
+    var message = "";
     var total_pembayaran = 0;
+    
+    message += `Hai ${clientName} \n`;
+    message += 'Terimakasih telah memesan makanan, berikut ini adalah review pesanannya:\n'
     for (i in list_data) {
       var int_price = parseInt(list_data[i].price);
       var int_total = parseInt(list_data[i].total);
@@ -168,16 +171,19 @@ function simpanData() {
 
       total_pembayaran += pembayaran;
 
-      message += `*${list_data[i].total} ${list_data[i].name} \n`;
-
       clientName = $("#clientNameNav").text();
+
+      message += `*${list_data[i].total} ${list_data[i].name} \n`;
     }
+    message += `Total pembayaran Rp. ${total_pembayaran} \n`;
+    message += `Pesanan kak ${clientName} sedang diproses dan akan diberitahu jika selesai. Mohon ditunggu, Terimakasih`;
+
     if (!liff.isInClient()) {
         sendAlertIfNotInClient();
     } else {
         liff.sendMessages([{
             'type': 'text',
-            'text': `Hai ${clientName}\nTerimakasih telah memesan makanan, berikut adalah review pesanannya:\n${message}\nPesanan kak ${clientName} sedang diproses dan akan diberitahu jika selesai\nMohon ditunggu. Terimakasih`
+            'text': `${message}`
         }]).then(function() {
             alert('Pesanan sedang diproses');
         }).catch(function(error) {
