@@ -74,7 +74,7 @@ function initializeApp() {
   } else {
     document.getElementById("liffLogoutButton").disabled = true;
   }
-  
+
   displayIsInClientInfo();
   registerButtonHandlers();
   displayClientProfile();
@@ -90,13 +90,6 @@ function displayIsInClientInfo() {
   } else {
     document.getElementById("openWindowButton").classList.toggle("hidden");
   }
-}
-
-// display alert that LIFF not supported external browser
-function sendAlertIfNotInClient() {
-  alert(
-    "This button is unavailable as LIFF is currently being opened in an external browser."
-  );
 }
 
 /**
@@ -147,7 +140,7 @@ function registerButtonHandlers() {
 
 function displayClientProfile() {
   if (!liff.isInClient()) {
-    sendAlertIfNotInClient();
+    console.log("please open in app line");
   } else {
     liff.getProfile()
     .then(profile => {
