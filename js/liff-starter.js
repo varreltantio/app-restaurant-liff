@@ -132,18 +132,6 @@ function registerButtonHandlers() {
       });
     });
 
-  // close window
-  document
-    .getElementById("closeWindowButton")
-    .addEventListener("click", function () {
-      // jika membuka aplikasi LIFF pada eksternal browser
-      if (!liff.isInClient()) {
-        sendAlertIfNotInClient();
-      } else {
-        liff.closeWindow();
-      }
-    });
-
   // login
   document
     .getElementById("liffLoginButton")
@@ -151,7 +139,6 @@ function registerButtonHandlers() {
       // cek jika belum login
       if (!liff.isLoggedIn()) {
         liff.login();
-        window.location.reload();
       }
     });
 
