@@ -142,6 +142,7 @@ function registerButtonHandlers() {
       // cek jika sudah login
       if (liff.isLoggedIn()) {
         liff.logout();
+        $("input[name='name']").val(0);
         window.location.reload();
       }
     });
