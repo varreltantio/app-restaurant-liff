@@ -159,8 +159,10 @@ function simpanData() {
   if (localStorage.list_data) {
     list_data = JSON.parse(localStorage.getItem("list_data"));
 
-    message = "";
+    var message = "";
     var total_pembayaran = 0;
+    
+    var clientName = $("#clientNameNav").text();
     
     message += `Hai ${clientName} \n`;
     message += 'Terimakasih telah memesan makanan, berikut ini adalah review pesanannya:\n';
@@ -170,8 +172,6 @@ function simpanData() {
       var pembayaran = int_price * int_total;
 
       total_pembayaran += pembayaran;
-
-      clientName = $("#clientNameNav").text();
 
       message += `*${list_data[i].total} ${list_data[i].name} \n`;
     }
