@@ -164,8 +164,8 @@ function simpanData() {
     
     var clientName = $("#clientNameNav").text();
     
-    message += `Hai ${clientName} \n`;
-    message += 'Terimakasih telah memesan makanan, berikut ini adalah review pesanannya:\n';
+    message += `Hai ${clientName} \n\n`;
+    message += 'Terimakasih telah memesan makanan, berikut ini adalah review pesanannya:\n\n';
     for (i in list_data) {
       var int_price = parseInt(list_data[i].price);
       var int_total = parseInt(list_data[i].total);
@@ -173,9 +173,9 @@ function simpanData() {
 
       total_pembayaran += pembayaran;
 
-      message += `*${list_data[i].total} ${list_data[i].name} \n`;
+      message += `*${list_data[i].total} ${list_data[i].name} \n\n`;
     }
-    message += `Total pembayaran Rp. ${total_pembayaran} \n`;
+    message += `Total pembayaran Rp. ${total_pembayaran} \n\n`;
     message += `Pesanan kak ${clientName} sedang diproses dan akan diberitahu jika selesai. Mohon ditunggu, Terimakasih`;
 
     if (!liff.isInClient()) {
