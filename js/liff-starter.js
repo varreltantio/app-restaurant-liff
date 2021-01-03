@@ -74,8 +74,10 @@ function initializeApp() {
   // check if the user is logged in/out, and disable inappropriate button
   if (liff.isLoggedIn()) {
     document.getElementById("liffLoginButton").disabled = true;
+    document.getElementById("login").classList.toggle("hidden");
   } else {
     document.getElementById("liffLogoutButton").disabled = true;
+    document.getElementById("content").classList.toggle("hidden");
   }
 }
 
@@ -94,11 +96,8 @@ function displayIsInClientInfo() {
   if (liff.isInClient()) {
     document.getElementById("liffLoginButton").classList.toggle("hidden");
     document.getElementById("liffLogoutButton").classList.toggle("hidden");
-    document.getElementById("isInClientMessage").textContent =
-      "You are opening the app in the in-app browser of LINE.";
   } else {
-    document.getElementById("isInClientMessage").textContent =
-      "You are opening the app in an external browser.";
+    document.getElementById("openWindowButton").classList.toggle("hidden");
   }
 }
 
@@ -152,6 +151,7 @@ function registerButtonHandlers() {
       // cek jika belum login
       if (!liff.isLoggedIn()) {
         liff.login();
+        window.location.reload();
       }
     });
 
@@ -163,29 +163,6 @@ function registerButtonHandlers() {
       if (liff.isLoggedIn()) {
         liff.logout();
         window.location.reload();
-      }
-    });
-
-  // send message
-  document
-    .getElementById("sendMessageButton")
-    .addEventListener("click", function () {
-      if (!liff.isInClient()) {
-        sendAlertIfNotInClient();
-      } else {
-        liff
-          .sendMessages([
-            {
-              type: "text",
-              text: "Anda telah menggunakan fitur send message",
-            },
-          ])
-          .then(() => {
-            window.alert("Ini adalah pesan dari fitur send message");
-          })
-          .catch((error) => {
-            window.alert(`Error sending message ${error}`);
-          });
       }
     });
 }
