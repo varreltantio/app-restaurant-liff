@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     data = {
       id: id,
-      name: name.html(),
+      name: name.text(),
       total: value,
       price: price,
     };
@@ -59,7 +59,7 @@ $(document).ready(function () {
 
     data = {
       id: id,
-      name: name.html(),
+      name: name.text(),
       total: value,
       price: price,
     };
@@ -72,45 +72,6 @@ $(document).ready(function () {
     ubahPesanan(data);
     loadPesanan();
   });
-
-  // $("#buttonPesan").on("click", function () {
-  //   if (localStorage.list_data) {
-  //     list_data = JSON.parse(localStorage.getItem("list_data"));
-
-  //     message = "";
-  //     var total_pembayaran = 0;
-  //     for (i in list_data) {
-  //       var int_price = parseInt(list_data[i].price);
-  //       var int_total = parseInt(list_data[i].total);
-  //       var pembayaran = int_price * int_total;
-
-  //       total_pembayaran += pembayaran;
-
-  //       message += `*${list_data[i].total} ${list_data[i].name}`;
-  //     }
-  //   }
-
-  //   if (!liff.isInClient()) {
-  //     sendAlertIfNotInClient();
-  //   } else {
-  //       liff.sendMessages([{
-  //           "type": "text",
-  //           "text": `
-  //           Hai Customer, 
-  //           Terimakasih telah memesan di Nito Resto, Berikut adalah review pesananya :
-  //           ${message}
-  //           `
-  //       }])
-  //       .then(() => {
-  //         alert("Pesanan telah diterima. Harap tunggu");
-  //       })
-  //       .catch((error) => {
-  //         alert("Aduh kok error ya...");
-  //       });    
-  //   }
-
-  //   return false
-  // });
 });
 
 function loadPesanan() {
@@ -195,17 +156,41 @@ function hapusPesanan(data) {
 }
 
 function simpanData() {
+  if (localStorage.list_data) {
+    list_data = JSON.parse(localStorage.getItem("list_data"));
 
-  if (!liff.isInClient()) {
-      sendAlertIfNotInClient();
-  } else {
-      liff.sendMessages([{
-          'type': 'text',
-          'text': 'Catatan baru berhasil disimpan'
-      }]).then(function() {
-          alert('Catatan Tersimpan');
-      }).catch(function(error) {
-          alert('Aduh kok error ya...');
-      });
+    message = "";
+    var total_pembayaran = 0;
+    for (i in list_data) {
+      var int_price = parseInt(list_data[i].price);
+      var int_total = parseInt(list_data[i].total);
+      var pembayaran = int_price * int_total;
+
+      total_pembayaran += pembayaran;
+
+      message += `*${list_data[i].total} ${list_data[i].name}`;
+
+      clientName = $("#clientName").text();
+    }
+    if (!liff.isInClient()) {
+        sendAlertIfNotInClient();
+    } else {
+        liff.sendMessages([{
+            'type': 'text',
+            'text': `Hai ${clientName}
+
+            Terimakasih telah memesan makanan, berikut adalah review pesanannya:
+            
+            ${message}
+            
+            Pesanan kak ${clientName} sedang diproses dan akan diberitahu jika selesai
+            
+            Mohon ditunggu. Terimakasih`
+        }]).then(function() {
+            alert('Catatan Tersimpan');
+        }).catch(function(error) {
+            alert('Aduh kok error ya...');
+        });
+    }
   }
 }

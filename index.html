@@ -1,22 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nito Resto</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <!-- My Css -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <div class="container" onload="loadPesanan()">
+
+<body onload="loadPesanan()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" id="client" href="#">
+                            <img src="img/default.jpg" alt="profile-image" id="clientProfile" class="rounded-circle"
+                                width="12%">
+                            <span id="clientName">Costumer</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="href" class="nav-link">
+                            <p class="btn btn-danger">Logout</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+
         <div class="page-header text-center">
             <h1>Nito Resto</h1>
-            <p>Halo <b>Costumer</b>! Selamat datang di Nito Resto. Silahkan pesan melalui menu dibawah ini</p>
+            <p>Halo <span id="clientName" class="fw-bold">Costumer</span>! Selamat datang di Nito Resto. Silahkan
+                pesan melalui
+                menu dibawah ini</p>
         </div>
 
         <div id="makanan" class="makanan page-header">
@@ -26,7 +58,7 @@
                     <div class="card">
                         <a href="#"><img src="img/makanan/sate.jpg" class="card-img-top" alt="sate"></a>
                         <div class="card-body qty">
-                            <input type="text" name="id" class="id_data"  value="1" hidden>
+                            <input type="text" name="id" class="id_data" value="1" hidden>
                             <h3><a href="#" class="text-decoration-none">Sate</a></h3>
                             <p class="text-muted" data-price="10000">Rp. 10.000</p>
                             <a class="minus bg-dark" style="display: none;">-</a>
@@ -128,9 +160,11 @@
             <div id="statusMessage">
                 <div id="isInClientMessage"></div>
                 <div id="apiReferenceMessage">
-                    <p class="mt-5">Available LIFF methods vary depending on the browser you use to open the LIFF app.</p>
-                    <p>Please refer to the 
-                        <a href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">API reference page</a> 
+                    <p class="mt-5">Available LIFF methods vary depending on the browser you use to open the LIFF app.
+                    </p>
+                    <p>Please refer to the
+                        <a href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">API reference
+                            page</a>
                         for more information.
                     </p>
                 </div>
@@ -141,7 +175,7 @@
         <div id="liffIdErrorMessage" class="hidden">
             <p>You have not assigned any value for LIFF ID.</p>
             <p>If you are running the app using Node.js, please set the LIFF ID as an environment variable in your
-                Heroku account follwing the below steps: 
+                Heroku account follwing the below steps:
             </p>
 
             <code id="code-block">
@@ -155,15 +189,17 @@
             </code>
 
             <p>If you are using any other platform, please add your LIFF ID in the <code>index.html</code> file.</p>
-            <p>For more information about how to add your LIFF ID, see 
-                <a href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">Initializing the LIFF app</a>.
+            <p>For more information about how to add your LIFF ID, see
+                <a href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">Initializing the LIFF
+                    app</a>.
             </p>
         </div>
 
         <!-- LIFF INIT ERROR -->
         <div id="liffInitErrorMessage" class="hidden">
             <p>Something went wrong with LIFF initialization.</p>
-            <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
+            <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error
+                occurs in the process of <code>liff.init()</code>.
         </div>
 
         <!-- NODE.JS LIFF ID ERROR -->
@@ -177,10 +213,13 @@
     <!-- Owl Carousel -->
     <script src="js/owl.carousel.min.js"></script>
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
     <!-- My JS -->
     <script src="js/main.js"></script>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script src="js/liff-starter.js"></script>
 </body>
+
 </html>

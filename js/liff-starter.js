@@ -69,6 +69,7 @@ function initializeApp() {
   displayLiffData();
   displayIsInClientInfo();
   registerButtonHandlers();
+  displayClientProfile();
 
   // check if the user is logged in/out, and disable inappropriate button
   if (liff.isLoggedIn()) {
@@ -127,7 +128,7 @@ function registerButtonHandlers() {
     .getElementById("openWindowButton")
     .addEventListener("click", function () {
       liff.openWindow({
-        url: "https://belajar-liff-v2.herokuapp.com/", // Isi dengan Endpoint URL aplikasi web Anda
+        url: "https://nito-resto.herokuapp.com/", // Isi dengan Endpoint URL aplikasi web Anda
         external: true,
       });
     });
@@ -187,4 +188,19 @@ function registerButtonHandlers() {
           });
       }
     });
+}
+
+function displayClientProfile() {
+  if (!liff.isInClient()) {
+    sendAlertIfNotInClient();
+  } else {
+    liff.getProfile()
+    .then(profile => {
+      document.getElementById("clientName").textContent = profile.displayName;
+      document.getElementById("clientProfile").src = profile.pictureUrl;
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
+  }
 }
