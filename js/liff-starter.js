@@ -73,6 +73,7 @@ function initializeApp() {
     document.getElementById("content").classList.remove("hidden");
     document.getElementById("navbar").classList.remove("hidden");
   } else {
+    document.getElementById("login").classList.remove("hidden");
     document.getElementById("liffLogoutButton").disabled = true;
   }
   
