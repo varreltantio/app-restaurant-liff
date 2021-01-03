@@ -73,7 +73,7 @@ $(document).ready(function () {
     loadPesanan();
   });
 
-  $("#login").show();
+  document.getElementById("login").classList.remove("hidden");
 });
 
 function loadPesanan() {
