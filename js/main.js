@@ -163,7 +163,7 @@ function simpanData() {
     var total_pembayaran = 0;
     
     message += `Hai ${clientName} \n`;
-    message += 'Terimakasih telah memesan makanan, berikut ini adalah review pesanannya:\n'
+    message += 'Terimakasih telah memesan makanan, berikut ini adalah review pesanannya:\n';
     for (i in list_data) {
       var int_price = parseInt(list_data[i].price);
       var int_total = parseInt(list_data[i].total);

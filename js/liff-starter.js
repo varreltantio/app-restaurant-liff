@@ -198,7 +198,7 @@ function displayClientProfile() {
     .then(profile => {
       document.getElementById("clientNameNav").textContent = profile.displayName;
       document.getElementById("clientNameHeader").textContent = profile.displayName;
-      $("clientProfile").attr("src", profile.pictureUrl);
+      $("#clientProfile").attr("src", profile.pictureUrl);
     })
     .catch((err) => {
       console.log('error', err);
