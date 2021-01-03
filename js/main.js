@@ -187,7 +187,7 @@ function simpanData() {
             
             Mohon ditunggu. Terimakasih`
         }]).then(function() {
-            alert('Catatan Tersimpan');
+            alert('Pesanan sedang diproses');
         }).catch(function(error) {
             alert('Aduh kok error ya...');
         });
